@@ -2,10 +2,10 @@
     background-color: white;
 }*/
 
-.pagecontrol section[role=main] {
+/*.pagecontrol section[role=main] {
     margin-left: 120px;
     margin-right: 120px;
-}
+}*/
 
 #resultsListView .win-listview .win-container {
     background-color: #EBF3FA;
@@ -79,7 +79,7 @@
         }
 
 
-@media screen and (-ms-view-state: snapped) {
+/*@media screen and (-ms-view-state: snapped) {
     .pagecontrol section[role=main] {
         margin-left: 20px;
         margin-right: 20px;
@@ -91,4 +91,4 @@
         margin-left: 100px;
         margin-right: 100px;
     }
-}
+}*/

@@ -28,6 +28,9 @@
             }
 
             $("#go").click(onRecipesSearch);
+        },
+        unload: function () {
+            $("body").css("background-color", "white");
         }
     });
 })();

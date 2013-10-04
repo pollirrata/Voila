@@ -3,6 +3,13 @@
 (function () {
     "use strict";
 
+
+    var itemClicked = function (e) {
+        e.detail.itemPromise.then(function (item) {
+            WinJS.Navigation.navigate("/pages/search/detail.html", item.data);
+        });
+    }
+
     WinJS.UI.Pages.define("/pages/search/results.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
@@ -23,11 +30,15 @@
 
             //WinJS.Namespace.define("SearchResults", publicMembers);
 
-            
+            $(".win-backbutton").click(function () {
+                $("body").css("background-color", "#D24726");
+            });
+
+            resultsListView.addEventListener("iteminvoked", itemClicked);
         },
 
-        unload: function () {
-            // TODO: Respond to navigations away from this page.
+        unload: function (e) {
+
         },
 
         updateLayout: function (element, viewState, lastViewState) {

@@ -1,0 +1,103 @@
+﻿.detail section[role=main] {
+    /*margin-left: 120px;
+    margin-right: 120px;*/
+}
+
+.spanner {
+    height: 100%;
+    display: inline-block;
+    /*border: solid;*/
+    vertical-align: middle;
+}
+
+#recipeDetail {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 2fr;
+    -ms-grid-rows: 150px 1fr;
+}
+
+    #recipeDetail .name {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+        background-color: #ffd800;
+    }
+
+        #recipeDetail .name h2 {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 10px;
+            font-weight: 900;
+            text-shadow: 2px 2px 2px #aaa;
+            color: #333;
+            font-size: 30px;
+        }
+
+    #recipeDetail .info {
+        -ms-grid-column: 2;
+        -ms-grid-row: 1;
+    }
+
+        #recipeDetail .info > div {
+            display: inline-block;
+            background-color: #ECF3FA;
+            border-radius: 7px 0 7px 0;
+            height: 50px;
+            width: 700px;
+            text-align: left;
+        }
+
+        #recipeDetail .info div div {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #recipeDetail .info div .ingredientsCount {
+            width: 20%;
+        }
+
+        #recipeDetail .info div .portions {
+            width: 20%;
+        }
+
+        #recipeDetail .info div .time {
+            width: 20%;
+        }
+
+        #recipeDetail .info div .difficulty {
+            width: 10%;
+        }
+
+        #recipeDetail .info div .favorite {
+            width: 5%;
+        }
+
+        #recipeDetail .info div .stars {
+            width: 20%;
+        }
+
+    #recipeDetail .ingredients {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+    }
+
+    #recipeDetail .preparation {
+        -ms-grid-column: 2;
+        -ms-grid-row: 2;
+    }
+
+
+@media screen and (-ms-view-state: snapped) {
+    .detail section[role=main] {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+    /*.detail section[role=main] {
+        margin-left: 100px;
+        margin-right: 100px;
+    }*/
+}

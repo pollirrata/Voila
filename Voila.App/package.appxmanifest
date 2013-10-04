@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="529c3cef-de12-4ef3-9c53-a8f00c59792a" Version="1.0.0.0" Publisher="CN=pollirrata" />
+  <Identity Name="Voila" Version="1.0.0.0" Publisher="CN=pollirrata" />
   <Properties>
     <DisplayName>Voila.App</DisplayName>
     <PublisherDisplayName>pollirrata</PublisherDisplayName>
