@@ -1,0 +1,13 @@
+{
+   "_id": "_design/recipes",
+   "_rev": "49-f7d1c2c3b9f3529f64575ff95484c8c9",
+   "language": "javascript",
+   "views": {
+       "byingredient": {
+           "map": "function(receta) {\n  if(receta.etiquetas){\n for(ingrediente in receta.etiquetas) { emit(receta.etiquetas[ingrediente], {_id:receta._id, nombre: receta.nombre, ingredientes: receta.ingredientes, porciones: receta.porciones, tiempo: receta.tiempo, dificultad: receta.dificultad, preparacion: receta.preparacion, etiquetas: receta.etiquetas, cantidadIngredientes: receta.etiquetas.length});}\n }\n}"
+       },
+       "names": {
+           "map": "function(receta) {\n   emit(receta.nombre, null);\n}"
+       }
+   }
+}

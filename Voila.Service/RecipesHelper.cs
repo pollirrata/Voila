@@ -77,37 +77,6 @@ namespace Voila.Service
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.ReasonPhrase);
 
-            //var parsed = JsonObject.Parse(response.Content.ReadAsStringAsync().Result);
-
-
-            //var type = new
-            //{
-            //    rows = new[]
-            //    {
-            //        new {
-            //        key = string.Empty, 
-            //        value = new []{
-            //            new []{
-            //                new []{
-            //                    new {
-            //                        _id = string.Empty,
-            //                        nombre = string.Empty,
-            //                        ingredientes = string.Empty,
-            //                        porciones = 0,
-            //                        tiempo = string.Empty,
-            //                        dificultad = string.Empty,
-            //                        preparacion = string.Empty,
-            //                        favoritos = 0,
-            //                        etiquetas = new [] {string.Empty},
-            //                        cantidadIngredientes = 0
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //    }
-            //};
-
             var type = new
             {
                 total_rows = 0,
@@ -120,11 +89,11 @@ namespace Voila.Service
                         value = new {
                         _id = string.Empty,
                         nombre = string.Empty,
-                        ingredientes = string.Empty,
+                        ingredientes = new[] {string.Empty},
                         porciones = 0,
                         tiempo = string.Empty,
                         dificultad = string.Empty,
-                        preparacion = string.Empty,
+                        preparacion =  new[] {string.Empty},
                         favoritos = 0,
                         etiquetas = new [] {string.Empty},
                         cantidadIngredientes = 0

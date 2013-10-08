@@ -1,6 +1,14 @@
 ﻿.detail section[role=main] {
     /*margin-left: 120px;
     margin-right: 120px;*/
+    display: -ms-grid;
+    -ms-grid-columns: 120px 1fr;
+}
+
+#menu div{
+    height: 100px;
+    padding-top: 30px;
+    text-align: center;
 }
 
 .spanner {
@@ -11,6 +19,7 @@
 }
 
 #recipeDetail {
+    -ms-grid-column: 2;
     display: -ms-grid;
     -ms-grid-columns: 1fr 2fr;
     -ms-grid-rows: 150px 1fr;
@@ -19,7 +28,7 @@
     #recipeDetail .name {
         -ms-grid-column: 1;
         -ms-grid-row: 1;
-        background-color: #ffd800;
+        /*background-color: #ffd800;*/
     }
 
         #recipeDetail .name h2 {
