@@ -56,15 +56,23 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="css\default.css" />
+    <Content Include="images\bandera - 20.png" />
     <Content Include="images\buscar - 100.png" />
     <Content Include="images\buscar - 75.png" />
+    <Content Include="images\fav - 20.png" />
     <Content Include="images\favorito - 100.png" />
+    <Content Include="images\favorito - 20.png" />
+    <Content Include="images\favorito - 40.png" />
     <Content Include="images\favorito - 75.png" />
     <Content Include="images\informacion - 100.png" />
     <Content Include="images\informacion - 75.png" />
+    <Content Include="images\ingredientes - 20.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\popular - 100.png" />
     <Content Include="images\popular - 75.png" />
+    <Content Include="images\pop_20.png" />
+    <Content Include="images\porciones - 20.png" />
+    <Content Include="images\reloj - 20.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
@@ -74,10 +82,19 @@
     <Content Include="js\navigator.js" />
     <None Include="Voila.App_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="pages\favorites\lastmonth.css" />
+    <Content Include="pages\favorites\lastmonth.html" />
+    <Content Include="pages\favorites\lastmonth.js" />
+    <Content Include="pages\favorites\mine.css" />
+    <Content Include="pages\favorites\mine.html" />
+    <Content Include="pages\favorites\mine.js" />
     <Content Include="pages\home\home.css" />
     <Content Include="pages\home\home.html" />
     <Content Include="pages\home\home.js" />
     <Content Include="default.html" />
+    <Content Include="pages\info\home.css" />
+    <Content Include="pages\info\home.html" />
+    <Content Include="pages\info\home.js" />
     <Content Include="pages\search\detail.css" />
     <Content Include="pages\search\detail.html" />
     <Content Include="pages\search\detail.js" />

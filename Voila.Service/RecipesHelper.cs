@@ -7,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-//using Windows.Data.Json;
 using Newtonsoft.Json;
 
 
@@ -44,7 +43,85 @@ namespace Voila.Service
             }
         }
 
-        public static string GetRecipes(string[] ingredients)
+        public static string GetFavorites(string userId)
+        {
+            var response = httpClient.GetAsync(String.Format("voila/_design/recipes/_view/userFavorites?startkey=[\"{0}\",\"\"]&endkey=[\"{0}\",\"zzz\"]&group=true", userId)).Result;
+
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(response.ReasonPhrase);
+
+            var type = new
+            {
+                rows = new[] {
+                new{ key = new [] {string.Empty}}
+            }
+            };
+
+            //obtenemos los ids de las recetas que se marcaron como favoritas por el usuario
+            var parsed = JsonConvert.DeserializeAnonymousType(response.Content.ReadAsStringAsync().Result, type);
+
+            //si no hay resultados regresamos cadena vacia
+            if (!parsed.rows.Any())
+                return string.Empty;
+
+
+            var builder = new StringBuilder();
+            builder.Append("keys=[");
+            int items = 0;
+            int qty = parsed.rows.Length;
+            foreach (var row in parsed.rows.Select(r => r.key[1]))
+            {
+                builder.Append('"');
+                builder.Append(row);
+                builder.Append('"');
+                if (++items < qty)
+                    builder.Append(',');
+            }
+            builder.Append(']');
+
+            response = httpClient.GetAsync(String.Format("voila/_design/recipes/_view/bydocumentid?{0}", builder.ToString())).Result;
+
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(response.ReasonPhrase);
+
+            var documentType = new
+            {
+                total_rows = 0,
+                offset = 0,
+                rows = new[]
+                {
+                    new{
+                        id = string.Empty,
+                        key = string.Empty,
+                        value = new {
+                        _id = string.Empty,
+                        nombre = string.Empty,
+                        ingredientes = new[] {string.Empty},
+                        porciones = 0,
+                        tiempo = string.Empty,
+                        dificultad = string.Empty,
+                        preparacion =  new[] {string.Empty},
+                        favoritos = 0,
+                        etiquetas = new [] {string.Empty},
+                        cantidadIngredientes = 0
+                    }
+                    }
+                }
+
+            };
+
+            var parsedDocuments = JsonConvert.DeserializeAnonymousType(response.Content.ReadAsStringAsync().Result, documentType);
+
+            //si no hay resultados regresamos cadena vacia
+            if (!parsedDocuments.rows.Any())
+                return string.Empty;
+
+            var recipes = parsedDocuments.rows.Select(r => r.value).ToArray();
+
+            return JsonConvert.SerializeObject(recipes);
+        }
+
+        public static string SearchRecipes(string[] ingredients)
         {
             int qty = ingredients.Length;
             string parameter;
@@ -132,6 +209,23 @@ namespace Voila.Service
             }
 
             return JsonConvert.SerializeObject(recipes.Values);
+        }
+
+        public static bool AddToFavorites(string uuid, string recipeId)
+        {
+            var documentId = String.Format("voila/{0}", Guid.NewGuid().ToString().Replace("-", ""));
+
+            var value = new { recipe = recipeId, user = uuid, month = DateTime.Now.ToString("M-yyyy") };
+
+            var jsonparsed = JsonConvert.SerializeObject(value);
+
+            var requestMessage = new HttpRequestMessage(HttpMethod.Put, documentId);
+
+            requestMessage.Content = new StringContent(jsonparsed, Encoding.UTF8, "application/json");
+
+            var response = httpClient.SendAsync(requestMessage).Result;
+
+            return response.IsSuccessStatusCode;
         }
 
     }

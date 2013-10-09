@@ -13,15 +13,24 @@ namespace Voila.Component
     public sealed class Recipes
     {
         private static HttpClient httpClient = new HttpClient();
-        
+
         public Recipes()
         {
-            
+
 
         }
         public string SearchByIngredients(string ingredients)
         {
-            return RecipesHelper.GetRecipes(ingredients.Split(',').Select(i => i.Trim().ToLower()).ToArray<string>());
+            return RecipesHelper.SearchRecipes(ingredients.Split(',').Select(i => i.Trim().ToLower()).ToArray<string>());
+        }
+
+        public bool AddToFavorites(string uuid, string recipeId)
+        {
+            return RecipesHelper.AddToFavorites(uuid, recipeId);
+        }
+
+        public string GetFavorites(string uuid) {
+            return RecipesHelper.GetFavorites(uuid);
         }
     }
 }

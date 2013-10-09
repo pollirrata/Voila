@@ -5,10 +5,11 @@
     -ms-grid-columns: 120px 1fr;
 }
 
-#menu div{
+#menu div {
     height: 100px;
     padding-top: 30px;
     text-align: center;
+    cursor: pointer;
 }
 
 .spanner {
@@ -60,6 +61,10 @@
             vertical-align: middle;
             text-align: center;
             overflow: hidden;
+        }
+
+        #recipeDetail .info div img {
+            vertical-align: middle;
         }
 
         #recipeDetail .info div .ingredientsCount {

@@ -24,16 +24,16 @@
         <section aria-label="Main content" role="main">
             <div id="menu">
                 <div>
-                    <img src="../../images/buscar%20-%2075.png" />
+                    <img id="goSearch" src="../../images/buscar%20-%2075.png" />
                 </div>
                 <div>
-                    <img src="../../images/favorito%20-%2075.png" />
+                    <img id="goFavorites" src="../../images/favorito%20-%2075.png" />
                 </div>
                 <div>
-                    <img src="../../images/popular%20-%2075.png" />
+                    <img id="goPopular" src="../../images/popular%20-%2075.png" />
                 </div>
                 <div>
-                    <img src="../../images/informacion%20-%2075.png" />
+                    <img id="goInfo" src="../../images/informacion%20-%2075.png" />
                 </div>
             </div>
             <div id="recipeDetail">
@@ -45,11 +45,25 @@
                     <span class="spanner"></span>
                     <div>
                         <span class="spanner"></span>
-                        <div class="ingredientsCount"><span data-win-bind="innerText:cantidadIngredientes;"></span>ingredientes</div>
-                        <div class="portions"><span data-win-bind="innerText:porciones;"></span>porciones</div>
-                        <div class="time" data-win-bind="innerText:tiempo;"></div>
-                        <div class="difficulty" data-win-bind="innerText:dificultad;"></div>
-                        <div class="favorite">O</div>
+                        <div class="ingredientsCount">
+                            <img src="../../images/ingredientes%20-%2020.png" />
+                            <span data-win-bind="innerText:cantidadIngredientes;"></span>&nbsp;ingredientes
+                        </div>
+                        <div class="portions">
+                            <img src="../../images/porciones%20-%2020.png" />
+                            <span data-win-bind="innerText:porciones;"></span>&nbsp;porciones
+                        </div>
+                        <div class="time">
+                            <img src="../../images/reloj%20-%2020.png" />
+                            <span data-win-bind="innerText:tiempo;"></span>
+                        </div>
+                        <div class="difficulty">
+                            <img src="../../images/bandera%20-%2020.png" />
+                            <span data-win-bind="innerText:dificultad;"></span>
+                        </div>
+                        <div class="favorite">
+                            <img src="../../images/fav%20-%2020.png" />
+                        </div>
                         <div class="stars">XXXXX</div>
                     </div>
                 </div>
@@ -61,6 +75,11 @@
                 </div>
             </div>
         </section>
+    </div>
+    <div id="appbar" data-win-control="WinJS.UI.AppBar">
+        <button data-win-control="WinJS.UI.AppBarCommand" 
+            data-win-options="{id:'addFavorites', label:'Agregar a favoritos', icon:'add'}" 
+            type="button"></button>
     </div>
 </body>
 </html>

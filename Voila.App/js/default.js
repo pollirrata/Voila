@@ -23,6 +23,21 @@
                 nav.history = app.sessionState.history;
             }
 
+            var settings = Windows.Storage.ApplicationData.current.localSettings;
+
+            if (!settings.values["userIdentifier"]) {
+                var userComponent = new Voila.Component.User();
+                var uuid = userComponent.getNewUUID();
+                settings.values["userIdentifier"] = uuid;
+            }
+
+            var recipesComponent = new Voila.Component.Recipes();
+
+            var dataList = recipesComponent.getFavorites(settings.values["userIdentifier"]);
+
+            settings.values["favorites"] = dataList
+
+
             args.setPromise(WinJS.UI.processAll().then(function () {
                 if (nav.location) {
                     nav.history.current.initialPlaceholder = true;

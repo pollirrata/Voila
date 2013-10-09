@@ -20,8 +20,24 @@ namespace Voila.Test
         [TestMethod]
         public void GetByIngredients()
         {
-            var recipes = RecipesHelper.GetRecipes(new string[] { "chile", "tomate" });
+            var recipes = RecipesHelper.SearchRecipes(new string[] { "chile", "tomate" });
             Assert.IsNotNull(recipes);
         }
+
+        [TestMethod]
+        public void AddToFavorites() {
+
+            var result = RecipesHelper.AddToFavorites("x", "y");
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void GetFavorites() {
+            var result = RecipesHelper.GetFavorites("f5e9ee55-a7f2-4b08-8382-99562f384143");
+
+            Assert.IsNotNull(result);
+        }
+
     }
 }

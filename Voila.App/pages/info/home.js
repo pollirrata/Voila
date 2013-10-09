@@ -3,27 +3,15 @@
 (function () {
     "use strict";
 
-
-    var itemClicked = function (e) {
-        e.detail.itemPromise.then(function (item) {
-            WinJS.Navigation.navigate("/pages/search/detail.html", item.data);
-        });
-    }
-
-    WinJS.UI.Pages.define("/pages/search/results.html", {
+    WinJS.UI.Pages.define("/pages/info/home.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-
-            $(".win-backbutton").click(function () {
-                $("body").css("background-color", "#D24726");
-            });
-
-            resultsListView.addEventListener("iteminvoked", itemClicked);
+            // TODO: Initialize the page here.
         },
 
-        unload: function (e) {
-
+        unload: function () {
+            // TODO: Respond to navigations away from this page.
         },
 
         updateLayout: function (element, viewState, lastViewState) {

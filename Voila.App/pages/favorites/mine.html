@@ -2,27 +2,25 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>pagecontrol</title>
+    <title>mine</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.1.0/css/ui-light.css" rel="stylesheet" />
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
-    <script src="../../js/jquery-2.0.3.min.js"></script>
-    
-    <link href="results.css" rel="stylesheet" />
-    <script src="results.js"></script>
+
+    <link href="mine.css" rel="stylesheet" />
+    <script src="mine.js"></script>
 </head>
 <body>
-    <div class="pagecontrol fragment">
+    <div class="mine fragment">
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Resultados</span>
+                <span class="pagetitle">Favoritos</span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-
             <div id="recipeTemplate" data-win-control="WinJS.Binding.Template">
                 <div>
                     <div class="top">
@@ -41,12 +39,10 @@
 
             <div id="resultsListView"
                 data-win-control="WinJS.UI.ListView"
-                data-win-options="{ itemDataSource : WinJS.Navigation.state.dataSource, 
+                data-win-options="{ itemDataSource : Favorites.itemList.dataSource, 
                 itemTemplate: select('#recipeTemplate'),
                 oniteminvoked: itemClicked }">
             </div>
-
-
         </section>
     </div>
 </body>
