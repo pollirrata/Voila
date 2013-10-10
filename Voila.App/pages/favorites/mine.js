@@ -9,17 +9,58 @@
         });
     }
 
-    var settings = Windows.Storage.ApplicationData.current.localSettings;
+    var goSearch = function () {
+        WinJS.Navigation.history = {};
+        $("body").css("background-color", "#D24726");
+        WinJS.Navigation.navigate("/pages/search/search.html")
+    };
 
-    var itemList = new WinJS.Binding.List(jQuery.parseJSON(settings.values["favorites"]));
+    var goFavorites = function () {
+        WinJS.Navigation.navigate("/pages/favorites/mine.html")
+    };
 
-    // Create a namespace to make the data publicly
-    // accessible. 
+    var goPopular = function () {
+        WinJS.Navigation.navigate("/pages/favorites/lastmonth.html")
+    };
+
+    var goInfo = function () {
+        WinJS.Navigation.navigate("/pages/info/home.html")
+    };
+
+    //var settings = Windows.Storage.ApplicationData.current.localSettings;
+    //var localFolder = Windows.Storage.ApplicationData.current.localFolder;
+
+    //localFolder.getFileAsync("favorites.txt")
+    //   .then(function (file) {
+    //       return Windows.Storage.FileIO.readTextAsync(file);
+    //   }).done(function (favs) {
+    //       var recipes = jQuery.parseJSON(favs);
+
+    //       for (var i in recipes) {
+    //           recipes[i].favorita = true;
+    //           recipes[i].iconoFavorita = "../../images/favorito - 20.png";
+    //       }
+
+    //       var itemList = new WinJS.Binding.List(recipes);
+
+    //       //var publicMembers =
+    //       //    {
+    //       //        itemList: itemList
+    //       //    };
+    //       WinJS.Namespace.define("Favorites", itemList);
+    //   }, function () {
+    //       // data not found
+    //   });
+
+    var recipesComponent = new Voila.Component.Recipes();
+    var itemList = new WinJS.Binding.List(jQuery.parseJSON(recipesComponent.getFavoritesCacheString()));
+
     var publicMembers =
         {
             itemList: itemList
         };
     WinJS.Namespace.define("Favorites", publicMembers);
+
 
     WinJS.UI.Pages.define("/pages/favorites/mine.html", {
         // This function is called whenever a user navigates to this page. It
@@ -28,6 +69,11 @@
             // TODO: Initialize the page here.
 
             resultsListView.addEventListener("iteminvoked", itemClicked);
+
+            $("#goSearch").click(goSearch);
+            $("#goFavorites").click(goFavorites);
+            $("#goPopular").click(goPopular);
+            $("#goInfo").click(goInfo);
         },
 
         unload: function () {

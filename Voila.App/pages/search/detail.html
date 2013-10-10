@@ -8,8 +8,9 @@
     <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+    <script src="../../js/utils/json.js"></script>
     <script src="../../js/jquery-2.0.3.min.js"></script>
-
+    <link href="leftmenu.css" rel="stylesheet" />
     <link href="detail.css" rel="stylesheet" />
     <script src="detail.js"></script>
 </head>
@@ -17,69 +18,71 @@
     <div class="detail fragment">
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
-            <h1 class="titlearea win-type-ellipsis">
+            <h1 class="titlearea win-type-ellipsis logo">
                 <span class="pagetitle">Receta</span>
             </h1>
         </header>
-        <section aria-label="Main content" role="main">
-            <div id="menu">
-                <div>
-                    <img id="goSearch" src="../../images/buscar%20-%2075.png" />
-                </div>
-                <div>
-                    <img id="goFavorites" src="../../images/favorito%20-%2075.png" />
-                </div>
-                <div>
-                    <img id="goPopular" src="../../images/popular%20-%2075.png" />
-                </div>
-                <div>
-                    <img id="goInfo" src="../../images/informacion%20-%2075.png" />
-                </div>
-            </div>
-            <div id="recipeDetail">
-                <div class="name">
-                    <span class="spanner"></span>
-                    <h2 data-win-bind="innerText: nombre;">Nombre</h2>
-                </div>
-                <div class="info">
-                    <span class="spanner"></span>
+        <section aria-label="Main content" role="main" class="cookingBackground">
+            <div id="menuview">
+                <div id="menu">
                     <div>
-                        <span class="spanner"></span>
-                        <div class="ingredientsCount">
-                            <img src="../../images/ingredientes%20-%2020.png" />
-                            <span data-win-bind="innerText:cantidadIngredientes;"></span>&nbsp;ingredientes
-                        </div>
-                        <div class="portions">
-                            <img src="../../images/porciones%20-%2020.png" />
-                            <span data-win-bind="innerText:porciones;"></span>&nbsp;porciones
-                        </div>
-                        <div class="time">
-                            <img src="../../images/reloj%20-%2020.png" />
-                            <span data-win-bind="innerText:tiempo;"></span>
-                        </div>
-                        <div class="difficulty">
-                            <img src="../../images/bandera%20-%2020.png" />
-                            <span data-win-bind="innerText:dificultad;"></span>
-                        </div>
-                        <div class="favorite">
-                            <img src="../../images/fav%20-%2020.png" />
-                        </div>
-                        <div class="stars">XXXXX</div>
+                        <img id="goSearch" src="../../images/buscar%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goFavorites" src="../../images/favorito%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goPopular" src="../../images/popular%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goInfo" src="../../images/informacion%20-%2075.png" />
                     </div>
                 </div>
-                <div class="ingredients" data-win-bind="innerText: ingredientes">
-                    Ingredientes
-                </div>
-                <div class="preparation" data-win-bind="innerText: preparacion">
-                    Preparacion
+                <div id="recipeDetail">
+                    <div class="name">
+                        <h2 data-win-bind="innerText: nombre;">Nombre</h2>
+                    </div>
+                    <div class="info">
+                        <span class="spanner"></span>
+                        <div>
+                            <span class="spanner"></span>
+                            <div class="ingredientsCount">
+                                <img src="../../images/ingredientes%20-%2020.png" />
+                                <span data-win-bind="innerText:cantidadIngredientes;"></span>&nbsp;ingredientes
+                            </div>
+                            <div class="portions">
+                                <img src="../../images/porciones%20-%2020.png" />
+                                <span data-win-bind="innerText:porciones;"></span>&nbsp;porciones
+                            </div>
+                            <div class="time">
+                                <img src="../../images/reloj%20-%2020.png" />
+                                <span data-win-bind="innerText:tiempo;"></span>
+                            </div>
+                            <div class="difficulty">
+                                <img src="../../images/bandera%20-%2020.png" />
+                                <span data-win-bind="innerText:dificultad;"></span>
+                            </div>
+                            <div class="favorite">
+                                <img data-win-bind="src: iconoFavorita" />
+                            </div>
+                            <div class="stars">XXXXX</div>
+                        </div>
+                    </div>
+                    <div class="ingredients" data-win-bind="innerText: ingredientes">
+                        Ingredientes
+                    </div>
+                    <div class="preparation" data-win-bind="innerText: preparacion">
+                        Preparacion
+                    </div>
                 </div>
             </div>
         </section>
     </div>
-    <div id="appbar" data-win-control="WinJS.UI.AppBar">
-        <button data-win-control="WinJS.UI.AppBarCommand" 
-            data-win-options="{id:'addFavorites', label:'Agregar a favoritos', icon:'add'}" 
-            type="button"></button>
-    </div>
+    <!--<div id="appbar" data-win-control="WinJS.UI.AppBar">
+        <button data-win-control="WinJS.UI.AppBarCommand"
+            data-win-options="{id:'addFavorites', label:'Agregar a favoritos', icon:'add'}"
+            type="button">
+        </button>
+    </div>-->
 </body>
 </html>

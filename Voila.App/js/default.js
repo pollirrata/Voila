@@ -24,6 +24,8 @@
             }
 
             var settings = Windows.Storage.ApplicationData.current.localSettings;
+            var localFolder = Windows.Storage.ApplicationData.current.localFolder;
+            var recipesComponent = new Voila.Component.Recipes();
 
             if (!settings.values["userIdentifier"]) {
                 var userComponent = new Voila.Component.User();
@@ -31,11 +33,28 @@
                 settings.values["userIdentifier"] = uuid;
             }
 
-            var recipesComponent = new Voila.Component.Recipes();
-
             var dataList = recipesComponent.getFavorites(settings.values["userIdentifier"]);
 
-            settings.values["favorites"] = dataList
+            var recipes = [];
+            if (dataList && dataList != "") {
+                recipes = jQuery.parseJSON(dataList);
+
+                for (var i in recipes) {
+                    recipes[i].favorita = true;
+                    recipes[i].iconoFavorita = "../../images/favorito - 20.png";
+                }
+            }
+
+
+            //settings.values["favorites"] = dataList
+            //settings.values.remove("favorites");
+
+            localFolder.createFileAsync("favorites.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+              .then(function (file) {
+                  return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(recipes));
+              }).done(function () {
+                  recipesComponent.updateFavoritesCache();
+              });
 
 
             args.setPromise(WinJS.UI.processAll().then(function () {

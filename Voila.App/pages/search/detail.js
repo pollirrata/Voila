@@ -4,7 +4,7 @@
     "use strict";
 
     var recipe = null;
-    
+
     var goSearch = function () {
         WinJS.Navigation.history = {};
         $("body").css("background-color", "#D24726");
@@ -27,9 +27,30 @@
         var recipesComponent = new Voila.Component.Recipes();
 
         var settings = Windows.Storage.ApplicationData.current.localSettings;
-        //Si la receta no se pudo agregar a favoritos, el icono en la parte superior no se cambia
-        if (recipesComponent.addToFavorites(settings.values["userIdentifier"], recipe._id)) {
-            $(".favorite img").attr("src", "images/favorito - 20.png")
+        var localFolder = Windows.Storage.ApplicationData.current.localFolder;
+
+        if (!recipe.favorita) {
+            //Si la receta no se pudo agregar a favoritos, el icono en la parte superior no se cambia
+            //ni se agrega al local storage
+            if (recipesComponent.addToFavorites(settings.values["userIdentifier"], recipe._id)) {
+
+                //cambiar el icono
+                $(".favorite img").attr("src", "images/favorito - 20.png")
+
+                //agregar al local storage
+                recipe.favorita = true;
+                recipe.iconoFavorita = "../../images/favorito - 20.png";
+
+                var recipes = jQuery.parseJSON(recipesComponent.getFavoritesCacheString());
+                recipes.push(recipe);
+
+                localFolder.createFileAsync("favorites.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+                  .then(function (file) {
+                      return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(recipes));
+                  }).done(function () {
+                      recipesComponent.updateFavoritesCache();
+                  });
+            }
         }
     }
 
@@ -45,10 +66,9 @@
             WinJS.Binding.processAll(recipeDiv, recipe);
 
             $("#goSearch").click(goSearch);
-            $("#goFavorites").click(goFavorites);
+            $("#goFavorites").click(addFavorites);
             $("#goPopular").click(goPopular);
             $("#goInfo").click(goInfo);
-            $("#addFavorites").click(addFavorites);
 
         },
 

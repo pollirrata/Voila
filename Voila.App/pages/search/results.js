@@ -10,6 +10,24 @@
         });
     }
 
+    var goSearch = function () {
+        WinJS.Navigation.history = {};
+        $("body").css("background-color", "#D24726");
+        WinJS.Navigation.navigate("/pages/search/search.html")
+    };
+
+    var goFavorites = function () {
+        WinJS.Navigation.navigate("/pages/favorites/mine.html")
+    };
+
+    var goPopular = function () {
+        WinJS.Navigation.navigate("/pages/favorites/lastmonth.html")
+    };
+
+    var goInfo = function () {
+        WinJS.Navigation.navigate("/pages/info/home.html")
+    };
+
     WinJS.UI.Pages.define("/pages/search/results.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
@@ -20,6 +38,11 @@
             });
 
             resultsListView.addEventListener("iteminvoked", itemClicked);
+
+            $("#goSearch").click(goSearch);
+            $("#goFavorites").click(goFavorites);
+            $("#goPopular").click(goPopular);
+            $("#goInfo").click(goInfo);
         },
 
         unload: function (e) {

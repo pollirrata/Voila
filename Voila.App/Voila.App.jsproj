@@ -59,6 +59,7 @@
     <Content Include="images\bandera - 20.png" />
     <Content Include="images\buscar - 100.png" />
     <Content Include="images\buscar - 75.png" />
+    <Content Include="images\cooking-at-home.jpg" />
     <Content Include="images\fav - 20.png" />
     <Content Include="images\favorito - 100.png" />
     <Content Include="images\favorito - 20.png" />
@@ -76,12 +77,14 @@
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
+    <Content Include="images\voila-w.png" />
     <Content Include="images\voila.png" />
     <Content Include="js\default.js" />
     <Content Include="js\jquery-2.0.3.min.js" />
     <Content Include="js\navigator.js" />
     <None Include="Voila.App_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="js\utils\json.js" />
     <Content Include="pages\favorites\lastmonth.css" />
     <Content Include="pages\favorites\lastmonth.html" />
     <Content Include="pages\favorites\lastmonth.js" />
@@ -98,6 +101,7 @@
     <Content Include="pages\search\detail.css" />
     <Content Include="pages\search\detail.html" />
     <Content Include="pages\search\detail.js" />
+    <Content Include="pages\search\leftmenu.css" />
     <Content Include="pages\search\results.css" />
     <Content Include="pages\search\results.html" />
     <Content Include="pages\search\results.js" />

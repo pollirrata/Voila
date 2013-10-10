@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Windows.Storage;
+using Voila.Service.POCO;
 
 
 namespace Voila.Service
@@ -101,7 +103,6 @@ namespace Voila.Service
                         tiempo = string.Empty,
                         dificultad = string.Empty,
                         preparacion =  new[] {string.Empty},
-                        favoritos = 0,
                         etiquetas = new [] {string.Empty},
                         cantidadIngredientes = 0
                     }
@@ -213,7 +214,7 @@ namespace Voila.Service
 
         public static bool AddToFavorites(string uuid, string recipeId)
         {
-            var documentId = String.Format("voila/{0}", Guid.NewGuid().ToString().Replace("-", ""));
+            var documentId = String.Format("voila/{0}-{1}", uuid.Replace("-", ""), recipeId);
 
             var value = new { recipe = recipeId, user = uuid, month = DateTime.Now.ToString("M-yyyy") };
 
@@ -226,6 +227,25 @@ namespace Voila.Service
             var response = httpClient.SendAsync(requestMessage).Result;
 
             return response.IsSuccessStatusCode;
+        }
+
+        public static async Task<string> GetLocalStorageFile(string filename)
+        {
+
+            StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+
+            StorageFile sampleFile = await localFolder.GetFileAsync(filename);
+            String settingValue = await FileIO.ReadTextAsync(sampleFile);
+
+            //var type = new[] { new RecipePoco { } };
+            //if (!string.IsNullOrEmpty(settingValue.ToString()))
+            //{
+            //    favoritesString = settingValue.ToString();
+            //    favorites = JsonConvert.DeserializeAnonymousType(favoritesString, type);
+            //}
+
+            return settingValue.ToString();
+
         }
 
     }

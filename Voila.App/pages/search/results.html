@@ -9,7 +9,7 @@
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
     <script src="../../js/jquery-2.0.3.min.js"></script>
-    
+    <link href="leftmenu.css" rel="stylesheet" />
     <link href="results.css" rel="stylesheet" />
     <script src="results.js"></script>
 </head>
@@ -17,36 +17,53 @@
     <div class="pagecontrol fragment">
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
-            <h1 class="titlearea win-type-ellipsis">
+            <h1 class="titlearea win-type-ellipsis logo">
                 <span class="pagetitle">Resultados</span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-
-            <div id="recipeTemplate" data-win-control="WinJS.Binding.Template">
-                <div>
-                    <div class="top">
-                        <h2 class="name" data-win-bind="innerText: nombre"></h2>
-                        <div class="favorited">O</div>
-                        <div class="stars">XXXXX</div>
+            <div id="menuview">
+                <div id="menu">
+                    <div>
+                        <img id="goSearch" src="../../images/buscar%20-%2075.png" />
                     </div>
-                    <div class="bottom" style="-ms-grid-row: 2;">
-                        <div class="ingredients"><span data-win-bind="innerText: cantidadIngredientes"></span> Ingredientes</div>
-                        <div class="portions"><span data-win-bind="innerText: porciones"></span> Porciones</div>
-                        <div class="time" data-win-bind="innerText: tiempo"></div>
-                        <div class="difficulty" data-win-bind="innerText: dificultad"></div>
+                    <div>
+                        <img id="goFavorites" src="../../images/favorito%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goPopular" src="../../images/popular%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goInfo" src="../../images/informacion%20-%2075.png" />
+                    </div>
+                </div>
+                <div id="rightside">
+                    <div id="recipeTemplate" data-win-control="WinJS.Binding.Template">
+                        <div>
+                            <div class="top">
+                                <h2 class="name" data-win-bind="innerText: nombre"></h2>
+                                <div class="favorited">
+                                    <img data-win-bind="src: iconoFavorita;" />
+                                </div>
+                                <div class="stars">XXXXX</div>
+                            </div>
+                            <div class="bottom" style="-ms-grid-row: 2;">
+                                <div class="ingredients"><span data-win-bind="innerText: cantidadIngredientes"></span>&nbsp;Ingredientes</div>
+                                <div class="portions"><span data-win-bind="innerText: porciones"></span>&nbsp;Porciones</div>
+                                <div class="time" data-win-bind="innerText: tiempo"></div>
+                                <div class="difficulty" data-win-bind="innerText: dificultad"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="resultsListView"
+                        data-win-control="WinJS.UI.ListView"
+                        data-win-options="{ itemDataSource : WinJS.Navigation.state.dataSource, 
+                itemTemplate: select('#recipeTemplate'),
+                oniteminvoked: itemClicked }">
                     </div>
                 </div>
             </div>
-
-            <div id="resultsListView"
-                data-win-control="WinJS.UI.ListView"
-                data-win-options="{ itemDataSource : WinJS.Navigation.state.dataSource, 
-                itemTemplate: select('#recipeTemplate'),
-                oniteminvoked: itemClicked }">
-            </div>
-
-
         </section>
     </div>
 </body>

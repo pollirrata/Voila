@@ -1,16 +1,11 @@
-﻿.detail section[role=main] {
+﻿.cookingBackground {
     /*margin-left: 120px;
     margin-right: 120px;*/
-    display: -ms-grid;
-    -ms-grid-columns: 120px 1fr;
+    background-image: url(../../images/cooking-at-home.jpg);
+    background-position: 120px;
+    background-repeat: no-repeat;
 }
 
-#menu div {
-    height: 100px;
-    padding-top: 30px;
-    text-align: center;
-    cursor: pointer;
-}
 
 .spanner {
     height: 100%;
@@ -35,11 +30,11 @@
         #recipeDetail .name h2 {
             display: inline-block;
             vertical-align: middle;
-            padding: 10px;
-            font-weight: 900;
-            text-shadow: 2px 2px 2px #aaa;
-            color: #333;
-            font-size: 30px;
+            padding: 30px;
+            font-weight: 600;
+            text-shadow: 2px 2px 2px #bdbdbd;
+            color: #6f6d6d;
+            font-size: 35px;
         }
 
     #recipeDetail .info {

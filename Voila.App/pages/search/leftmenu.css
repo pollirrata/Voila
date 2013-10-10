@@ -1,0 +1,14 @@
+﻿#menuview {
+    display: -ms-grid;
+    -ms-grid-columns: 120px 1fr;
+}
+
+#menu div {
+    height: 100px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+    #menu div img {
+        cursor: pointer;
+    }

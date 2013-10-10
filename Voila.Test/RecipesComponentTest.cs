@@ -12,11 +12,25 @@ namespace Voila.Test
     public class RecipesComponentTest
     {
         [TestMethod]
-        public void GetRecipes() {
+        public void GetRecipes()
+        {
             var component = new Recipes();
             var recipes = component.SearchByIngredients("Jitomate, Cebolla, Lechuga");
             Assert.IsNotNull(recipes);
         }
 
+        [TestMethod]
+        public void CacheTest()
+        {
+            var component = new Recipes();
+
+            component.UpdateFavoritesCache();
+
+
+            component.CheckIfFavorited("x");
+
+
+
+        }
     }
 }
