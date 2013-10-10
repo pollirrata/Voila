@@ -34,10 +34,19 @@ namespace Voila.Test
 
         [TestMethod]
         public void GetFavorites() {
-            var result = RecipesHelper.GetFavorites("f5e9ee55-a7f2-4b08-8382-99562f384143");
+            var result = RecipesHelper.GetFavorites("f5e9ee55-a7f2-4b08-8382-99562f384143").Result;
 
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void GetPopular()
+        {
+            var result = RecipesHelper.GetPopular().Result;
+
+            Assert.IsNotNull(result);
+        }
+
 
     }
 }

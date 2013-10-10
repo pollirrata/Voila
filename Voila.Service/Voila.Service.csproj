@@ -99,6 +99,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="POCO\PopularPoco.cs" />
     <Compile Include="POCO\RecipePoco.cs" />
     <Compile Include="RecipesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

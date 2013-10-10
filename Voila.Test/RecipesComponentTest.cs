@@ -32,5 +32,19 @@ namespace Voila.Test
 
 
         }
+
+        [TestMethod]
+        public void PopularCacheTest()
+        {
+            var component = new Recipes();
+
+            component.UpdatePopularCache();
+
+
+            component.GetStars("fd1d6ee28093462d82fd0072b3f8a1de");
+
+
+
+        }
     }
 }

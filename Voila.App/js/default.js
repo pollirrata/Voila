@@ -33,29 +33,48 @@
                 settings.values["userIdentifier"] = uuid;
             }
 
-            var dataList = recipesComponent.getFavorites(settings.values["userIdentifier"]);
 
+            var popular = [];
             var recipes = [];
-            if (dataList && dataList != "") {
-                recipes = jQuery.parseJSON(dataList);
 
-                for (var i in recipes) {
-                    recipes[i].favorita = true;
-                    recipes[i].iconoFavorita = "../../images/favorito - 20.png";
+            //Agregar los populares al local storage
+            recipesComponent.getPopularAsync()
+            .then(function (list) {
+                if (list && list != "") {
+                    popular = jQuery.parseJSON(list);
                 }
-            }
+            }).done(function () {
+                localFolder.createFileAsync("popular.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+                  .then(function (file) {
+                      return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(popular));
+                  }).then(function () {
+                      recipesComponent.updatePopularCache();
+                  }).done(function () {
+                      //*************************************************************************
+                      //Agregar los favoritos al local storage
+                      recipesComponent.getFavoritesAsync(settings.values["userIdentifier"])
+                          .then(function (dataList) {
+                              if (dataList && dataList != "") {
+                                  recipes = jQuery.parseJSON(dataList);
 
-
-            //settings.values["favorites"] = dataList
-            //settings.values.remove("favorites");
-
-            localFolder.createFileAsync("favorites.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
-              .then(function (file) {
-                  return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(recipes));
-              }).done(function () {
-                  recipesComponent.updateFavoritesCache();
-              });
-
+                                  for (var i in recipes) {
+                                      recipes[i].favorita = true;
+                                      recipes[i].iconoFavorita = "../../images/favorito - 20.png";
+                                      var stars = recipesComponent.getStars(recipes[i]._id).toString();
+                                      recipes[i].stars = "../../images/pop" + stars + " - 20.png";
+                                  }
+                              }
+                          }).done(function () {
+                              localFolder.createFileAsync("favorites.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+                                .then(function (file) {
+                                    return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(recipes));
+                                }).done(function () {
+                                    recipesComponent.updateFavoritesCache();
+                                });
+                          });
+                      //**************************************************************************
+                  });
+            });
 
             args.setPromise(WinJS.UI.processAll().then(function () {
                 if (nav.location) {

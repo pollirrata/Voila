@@ -41,6 +41,9 @@
                 recipe.favorita = true;
                 recipe.iconoFavorita = "../../images/favorito - 20.png";
 
+                //var stars = recipesComponent.getStars(recipes[i]._id).toString();
+                //recipes[i].stars = "../../images/pop" + stars + " - 20.png";
+
                 var recipes = jQuery.parseJSON(recipesComponent.getFavoritesCacheString());
                 recipes.push(recipe);
 

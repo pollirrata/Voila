@@ -27,12 +27,15 @@
                 var recipes = jQuery.parseJSON(response);
                 //for(var i= 0; i<recipes.lenght; i++){
                 for (var i in recipes) {
-                    recipes[i].favorita = recipesComponent.checkIfFavorited(recipes[i]._id);
+                    var id = recipes[i]._id;
+                    recipes[i].favorita = recipesComponent.checkIfFavorited(id);
                     if (recipes[i].favorita) {
                         recipes[i].iconoFavorita = "../../images/favorito - 20.png";
                     } else {
                         recipes[i].iconoFavorita = "../../images/fav - 20.png";
                     }
+                    var stars = recipesComponent.getStars(recipes[i]._id).toString();
+                    recipes[i].stars = "../../images/pop" + stars + " - 20.png";
                 }
 
                 WinJS.Navigation.navigate("/pages/search/results.html", new WinJS.Binding.List(recipes));
