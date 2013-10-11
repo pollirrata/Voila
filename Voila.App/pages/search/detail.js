@@ -5,70 +5,6 @@
 
     var recipe = null;
 
-    var goSearch = function () {
-        WinJS.Navigation.history = {};
-        $("body").css("background-color", "#D24726");
-        WinJS.Navigation.navigate("/pages/search/search.html")
-    };
-
-    var goFavorites = function () {
-        WinJS.Navigation.navigate("/pages/favorites/mine.html")
-    };
-
-    var goPopular = function () {
-        WinJS.Navigation.navigate("/pages/favorites/lastmonth.html")
-    };
-
-    var goInfo = function () {
-        WinJS.Navigation.navigate("/pages/info/home.html")
-    };
-
-    var addFavorites = function () {
-        var recipesComponent = new Voila.Component.Recipes();
-
-        var settings = Windows.Storage.ApplicationData.current.localSettings;
-        var localFolder = Windows.Storage.ApplicationData.current.localFolder;
-
-        if (!recipe.favorita) {
-            //Si la receta no se pudo agregar a favoritos, el icono en la parte superior no se cambia
-            //ni se agrega al local storage
-            if (recipesComponent.addToFavorites(settings.values["userIdentifier"], recipe._id)) {
-
-                //cambiar el icono
-                $(".favorite img").attr("src", "images/favorito - 20.png")
-
-                //agregar al local storage
-                recipe.favorita = true;
-                recipe.iconoFavorita = "../../images/favorito - 20.png";
-
-                //var stars = recipesComponent.getStars(recipes[i]._id).toString();
-                //recipes[i].stars = "../../images/pop" + stars + " - 20.png";
-
-                var recipes = jQuery.parseJSON(recipesComponent.getFavoritesCacheString());
-                recipes.push(recipe);
-
-                localFolder.createFileAsync("favorites.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
-                  .then(function (file) {
-                      return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(recipes));
-                  }).done(function () {
-                      recipesComponent.updateFavoritesCache();
-                  });
-            }
-        }
-    }
-
-
-
-
-
-
-    $("#goSearch").click(goSearch);
-    $("#goFavorites").click(addFavorites);
-    $("#goPopular").click(goPopular);
-    $("#goInfo").click(goInfo);
-
-
-
     WinJS.Namespace.define("Jericalla.UI", {
         PagedList: WinJS.Class.define(function (element, options) {
             options = options || {};
@@ -111,6 +47,7 @@
 
                     bulletList = document.createElement(this._listType);
                     bulletList.id = 'bulletList_' + this._element.id;
+                    bulletList.setAttribute("class", "t1");
 
                     for (; i < len; i += 1) {
                         var listItem = document.createElement('li');
@@ -135,6 +72,10 @@
                     var ulClass = "";
                     for (; i < pages; i += 1) {
                         bulletList = document.createElement(this._listType);
+                        if (this._listType == "ol") {
+                            bulletList.setAttribute("start", i * this._pageSize + 1);
+                        }
+
                         bulletList.id = 'bulletList_' + this._element.id + "_" + i;
 
                         for (var j = i * this._pageSize; j < this._pageSize * (i + 1) && j < len; j += 1) {
@@ -183,6 +124,74 @@
                 var id = $(this).attr("data-val");
                 $("#recipeDetail .ingredients ul.t" + id).removeClass("invisible");
             })
+
+            $("#recipeDetail .preparation div").click(function () {
+                $("#recipeDetail .preparation div").removeClass("selected");
+                $(this).addClass("selected");
+
+                $("#recipeDetail .preparation ol").addClass("invisible");
+                var id = $(this).attr("data-val");
+                $("#recipeDetail .preparation ol.t" + id).removeClass("invisible");
+            })
+
+
+            var goSearch = function () {
+                WinJS.Navigation.history = {};
+                $("body").css("background-color", "#D24726");
+                WinJS.Navigation.navigate("/pages/search/search.html")
+            };
+
+            var goFavorites = function () {
+                WinJS.Navigation.navigate("/pages/favorites/mine.html")
+            };
+
+            var goPopular = function () {
+                WinJS.Navigation.navigate("/pages/favorites/lastmonth.html")
+            };
+
+            var goInfo = function () {
+                WinJS.Navigation.navigate("/pages/info/home.html")
+            };
+
+            var addFavorites = function () {
+                var recipesComponent = new Voila.Component.Recipes();
+
+                var settings = Windows.Storage.ApplicationData.current.localSettings;
+                var localFolder = Windows.Storage.ApplicationData.current.localFolder;
+
+                if (!recipe.favorita) {
+                    //Si la receta no se pudo agregar a favoritos, el icono en la parte superior no se cambia
+                    //ni se agrega al local storage
+                    if (recipesComponent.addToFavorites(settings.values["userIdentifier"], recipe._id)) {
+
+                        //cambiar el icono
+                        $(".favorite img").attr("src", "images/favorito - 20.png")
+
+                        //agregar al local storage
+                        recipe.favorita = true;
+                        recipe.iconoFavorita = "../../images/favorito - 20.png";
+
+                        //var stars = recipesComponent.getStars(recipes[i]._id).toString();
+                        //recipes[i].stars = "../../images/pop" + stars + " - 20.png";
+
+                        var recipes = jQuery.parseJSON(recipesComponent.getFavoritesCacheString());
+                        recipes.push(recipe);
+
+                        localFolder.createFileAsync("favorites.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+                          .then(function (file) {
+                              return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(recipes));
+                          }).done(function () {
+                              recipesComponent.updateFavoritesCache();
+                          });
+                    }
+                }
+            }
+
+            $("#goSearch").click(goSearch);
+            $("#goFavorites").click(addFavorites);
+            $("#goPopular").click(goPopular);
+            $("#goInfo").click(goInfo);
+
         },
 
         unload: function () {

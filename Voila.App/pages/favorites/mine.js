@@ -5,7 +5,15 @@
 
     var itemClicked = function (e) {
         e.detail.itemPromise.then(function (item) {
-            WinJS.Navigation.navigate("/pages/search/detail.html", item.data);
+
+            var recipe = item.data;
+
+            WinJS.Navigation.navigate("/pages/search/detail.html", recipe);
+
+            WinJS.Namespace.define("Data", {
+                ingredients: recipe.ingredientes,
+                preparation: recipe.preparacion
+            });
         });
     }
 

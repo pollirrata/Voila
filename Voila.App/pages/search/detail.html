@@ -73,10 +73,12 @@
                     <div class="ingredients" id="ingredientsList"
                         data-win-control="Jericalla.UI.PagedList"
                         data-win-options="{ itemList: Data.ingredients, listType: 'ul', pageSize: 8  }">
-                        <div data-val="1" class="title selected">Ingredientes</div><!--<div class="tab">2</div><div class="tab">3</div>-->
+                        <div data-val="1" class="title selected">Ingredientes</div>
                     </div>
-                    <div class="preparation" data-win-bind="innerText: preparacion">
-                        Preparacion
+                    <div class="preparation" id="preparationList"
+                        data-win-control="Jericalla.UI.PagedList"
+                        data-win-options="{ itemList: Data.preparation, listType: 'ol', pageSize: 8  }">
+                        <div data-val="1" class="title selected">Preparaci&oacute;n</div>
                     </div>
                 </div>
             </div>

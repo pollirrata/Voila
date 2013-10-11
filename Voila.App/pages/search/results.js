@@ -10,7 +10,8 @@
             WinJS.Navigation.navigate("/pages/search/detail.html", recipe);
 
             WinJS.Namespace.define("Data", {
-                ingredients: recipe.ingredientes
+                ingredients: recipe.ingredientes,
+                preparation: recipe.preparacion
             });
         });
     }

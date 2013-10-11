@@ -94,6 +94,7 @@
 
         #recipeDetail .ingredients div {
             background-color: #FCEADE;
+            text-shadow: 2px 2px 2px #bdbdbd;
             color: white;
             font-weight: 500;
             display: inline-block;
@@ -138,7 +139,52 @@
     #recipeDetail .preparation {
         -ms-grid-column: 2;
         -ms-grid-row: 2;
+        padding: 0 30px;
     }
+
+        #recipeDetail .preparation div {
+            background-color: #E7F3E0;
+            text-shadow: 2px 2px 2px #bdbdbd;
+            color: white;
+            font-weight: 500;
+            display: inline-block;
+            border-radius: 0 10px 0 0;
+            font-size: 20px;
+            height: 30px;
+            margin: 0;
+            padding: 10px;
+            vertical-align: bottom;
+            cursor: pointer;
+        }
+
+        #recipeDetail .preparation .tab {
+            padding: 3px 20px;
+            font-size: 20px;
+            margin-left: 2px;
+            margin-right: 1px;
+            /*border-radius: 0 5px 0 0;*/
+        }
+
+        #recipeDetail .preparation .selected {
+            background-color: #D0E6C2;
+        }
+
+        #recipeDetail .preparation .invisible {
+            display: none;
+        }
+
+        #recipeDetail .preparation ol {
+            background-color: #D0E6C2;
+            padding: 30px 20px 10px;
+            height: 100%;
+            margin: 0;
+        }
+
+            #recipeDetail .preparation ol li {
+                font-weight: 500;
+                margin-bottom: 5px;
+                margin-left: 20px;
+            }
 
 
 @media screen and (-ms-view-state: snapped) {
