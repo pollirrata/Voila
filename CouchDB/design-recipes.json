@@ -1,13 +1,19 @@
 {
-   "_id": "_design/recipes",
-   "_rev": "49-f7d1c2c3b9f3529f64575ff95484c8c9",
-   "language": "javascript",
-   "views": {
-       "byingredient": {
-           "map": "function(receta) {\n  if(receta.etiquetas){\n for(ingrediente in receta.etiquetas) { emit(receta.etiquetas[ingrediente], {_id:receta._id, nombre: receta.nombre, ingredientes: receta.ingredientes, porciones: receta.porciones, tiempo: receta.tiempo, dificultad: receta.dificultad, preparacion: receta.preparacion, etiquetas: receta.etiquetas, cantidadIngredientes: receta.etiquetas.length});}\n }\n}"
-       },
-       "names": {
-           "map": "function(receta) {\n   emit(receta.nombre, null);\n}"
-       }
+   "byingredient": {
+       "map": "function(receta) {\n  if(receta.etiquetas){\n for(ingrediente in receta.etiquetas) { emit(receta.etiquetas[ingrediente], {_id:receta._id, nombre: receta.nombre, ingredientes: receta.ingredientes, porciones: receta.porciones, tiempo: receta.tiempo, dificultad: receta.dificultad, preparacion: receta.preparacion, etiquetas: receta.etiquetas, cantidadIngredientes: receta.etiquetas.length});}\n }\n}"
+   },
+   "bydocumentid": {
+       "map": "function(receta) {\n  if(receta.etiquetas){\n emit(receta._id,{_id:receta._id, nombre: receta.nombre, ingredientes: receta.ingredientes, porciones: receta.porciones, tiempo: receta.tiempo, dificultad: receta.dificultad, preparacion: receta.preparacion, etiquetas: receta.etiquetas, cantidadIngredientes: receta.etiquetas.length})\n }\n}"
+   },
+   "names": {
+       "map": "function(receta) {\n   if(receta.nombre) emit(receta.nombre, null);\n}"
+   },
+   "userFavorites": {
+       "map": "function(doc) {\n   if(doc.user) emit([doc.user, doc.recipe],null);\n}",
+       "reduce": "function(keys,values,rereduce){ var result = {rows : []}; for(var i=1,e=keys.length; i<e; ++i) {result.rows.push(values[i].recipe);} return result; }"
+   },
+   "globalPopular": {
+       "map": "function(doc) {\n   if(doc.user) emit(doc.recipe,1);\n}",
+       "reduce": "function(keys,values){ var sum = 0; values.forEach(function(element) { sum = sum + element; }); return sum; }"
    }
 }
