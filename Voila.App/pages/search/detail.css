@@ -89,7 +89,51 @@
     #recipeDetail .ingredients {
         -ms-grid-column: 1;
         -ms-grid-row: 2;
+        padding: 0 30px;
     }
+
+        #recipeDetail .ingredients div {
+            background-color: #FCEADE;
+            color: white;
+            font-weight: 500;
+            display: inline-block;
+            border-radius: 0 10px 0 0;
+            font-size: 20px;
+            height: 30px;
+            margin: 0;
+            padding: 10px;
+            vertical-align: bottom;
+            cursor: pointer;
+        }
+
+        #recipeDetail .ingredients .tab {
+            padding: 3px 20px;
+            font-size: 20px;
+            margin-left: 2px;
+            margin-right: 1px;
+            /*border-radius: 0 5px 0 0;*/
+        }
+
+        #recipeDetail .ingredients .selected {
+            background-color: #FAD6BF;
+        }
+
+        #recipeDetail .ingredients .invisible {
+            display: none;
+        }
+
+        #recipeDetail .ingredients ul {
+            background-color: #FAD6BF;
+            padding: 30px 20px 10px;
+            height: 100%;
+            margin: 0;
+            list-style: none;
+        }
+
+            #recipeDetail .ingredients ul li {
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
 
     #recipeDetail .preparation {
         -ms-grid-column: 2;

@@ -85,6 +85,7 @@
     <Content Include="images\storelogo.png" />
     <Content Include="images\voila-w.png" />
     <Content Include="images\voila.png" />
+    <Content Include="js\controls\jericalla\winstorecontrols.js" />
     <Content Include="js\default.js" />
     <Content Include="js\jquery-2.0.3.min.js" />
     <Content Include="js\navigator.js" />
