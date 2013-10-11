@@ -34,7 +34,7 @@
                     } else {
                         recipes[i].iconoFavorita = "../../images/fav - 20.png";
                     }
-                    var stars = recipesComponent.getStars(recipes[i]._id).toString();
+                    var stars = recipesComponent.getStars(id).toString();
                     recipes[i].stars = "../../images/pop" + stars + " - 20.png";
                 }
 

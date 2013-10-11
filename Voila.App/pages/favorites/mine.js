@@ -35,30 +35,6 @@
         WinJS.Navigation.navigate("/pages/info/home.html")
     };
 
-    //var settings = Windows.Storage.ApplicationData.current.localSettings;
-    //var localFolder = Windows.Storage.ApplicationData.current.localFolder;
-
-    //localFolder.getFileAsync("favorites.txt")
-    //   .then(function (file) {
-    //       return Windows.Storage.FileIO.readTextAsync(file);
-    //   }).done(function (favs) {
-    //       var recipes = jQuery.parseJSON(favs);
-
-    //       for (var i in recipes) {
-    //           recipes[i].favorita = true;
-    //           recipes[i].iconoFavorita = "../../images/favorito - 20.png";
-    //       }
-
-    //       var itemList = new WinJS.Binding.List(recipes);
-
-    //       //var publicMembers =
-    //       //    {
-    //       //        itemList: itemList
-    //       //    };
-    //       WinJS.Namespace.define("Favorites", itemList);
-    //   }, function () {
-    //       // data not found
-    //   });
 
     var recipesComponent = new Voila.Component.Recipes();
     var itemList = new WinJS.Binding.List(jQuery.parseJSON(recipesComponent.getFavoritesCacheString()));

@@ -112,7 +112,7 @@ namespace Voila.Service
             return JsonConvert.SerializeObject(recipes);
         }
 
-        public static async Task<string> GetPopular(string month = "")
+        public static async Task<string> GetPopular()
         {
             var response = httpClient.GetAsync("voila/_design/recipes/_view/globalPopular?group=true").Result;
 
@@ -140,6 +140,75 @@ namespace Voila.Service
             var sorted = parsed.rows.OrderByDescending(r => r.value).Select(s => new PopularPoco { id = s.key, stars = GetStars(factor, s.value) });
 
             return JsonConvert.SerializeObject(sorted);
+        }
+
+        public static string GetPopular(int limit)
+        {
+            var response = httpClient.GetAsync("voila/_design/recipes/_view/globalPopular?group=true").Result;
+
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(response.ReasonPhrase);
+
+            var type = new
+            {
+                rows = new[] {
+                new{ key = string.Empty, value = 0}
+            }
+            };
+
+            //obtenemos los ids de las recetas que se marcaron como favoritas por el usuario
+            var parsed = JsonConvert.DeserializeAnonymousType(response.Content.ReadAsStringAsync().Result, type);
+
+            //si no hay resultados regresamos cadena vacia
+            if (!parsed.rows.Any())
+                return string.Empty;
+
+            //lo limitamos a los primeros N, especificados por el parametro
+            var sorted = parsed.rows.OrderByDescending(r => r.value).Take(limit).Select(s => s.key).ToArray();
+
+            //buscamos el detalle de las recetas en el servidor
+            var builder = new StringBuilder();
+            builder.Append("keys=[");
+            int items = 0;
+            foreach (var row in sorted)
+            {
+                builder.Append('"');
+                builder.Append(row);
+                builder.Append('"');
+                if (++items < limit)
+                    builder.Append(',');
+            }
+            builder.Append(']');
+
+            response = httpClient.GetAsync(String.Format("voila/_design/recipes/_view/bydocumentid?{0}", builder.ToString())).Result;
+
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(response.ReasonPhrase);
+
+            var documentType = new
+            {
+                total_rows = 0,
+                offset = 0,
+                rows = new[]
+                {
+                    new{
+                        id = string.Empty,
+                        key = string.Empty,
+                        value = new RecipePoco()
+                    }
+                }
+
+            };
+
+            var parsedDocuments = JsonConvert.DeserializeAnonymousType(response.Content.ReadAsStringAsync().Result, documentType);
+
+            //si no hay resultados regresamos cadena vacia
+            if (!parsedDocuments.rows.Any())
+                return string.Empty;
+
+            var recipes = parsedDocuments.rows.Select(r => r.value).ToArray();
+
+            return JsonConvert.SerializeObject(recipes);
         }
 
         private static int GetStars(double factor, int value)
@@ -257,18 +326,6 @@ namespace Voila.Service
             var response = httpClient.SendAsync(requestMessage).Result;
 
             return response.IsSuccessStatusCode;
-        }
-
-        public static async Task<string> GetLocalStorageFile(string filename)
-        {
-
-            StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-
-            StorageFile sampleFile = await localFolder.GetFileAsync(filename);
-            String settingValue = await FileIO.ReadTextAsync(sampleFile);
-
-            return settingValue.ToString();
-
         }
 
     }

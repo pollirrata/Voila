@@ -16,12 +16,63 @@
     <div class="lastmonth fragment">
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
-            <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to lastmonth</span>
+            <h1 class="titlearea win-type-ellipsis logo">
+                <span class="pagetitle">Más populares</span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-            <p>Content goes here.</p>
+            <div id="menuview">
+                <div id="menu">
+                    <div>
+                        <img id="goSearch" src="../../images/buscar%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goFavorites" src="../../images/favorito%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goPopular" src="../../images/popular%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goInfo" src="../../images/informacion%20-%2075.png" />
+                    </div>
+                </div>
+                <div id="rightside">
+                    <div id="recipeTemplate" data-win-control="WinJS.Binding.Template">
+                        <div>
+                            <div class="top">
+                                <h2 class="name" data-win-bind="innerText: nombre"></h2>
+                                <div class="favorited">
+                                    <img src="../../images/favorito%20-%2020.png" />
+                                </div>
+                                <div class="stars">
+                                    <img data-win-bind="src: stars;" />
+                                </div>
+                            </div>
+                            <div class="bottom" style="-ms-grid-row: 2;">
+                                <div class="ingredients">
+                                    <img src="../../images/ingredientes%20-%2020.png" /><span data-win-bind="innerText: cantidadIngredientes"></span>&nbsp;Ingredientes</div>
+                                <div class="portions">
+                                    <img src="../../images/porciones%20-%2020.png" /><span data-win-bind="innerText: porciones"></span>&nbsp;Porciones</div>
+                                <div class="time">
+                                    <img src="../../images/reloj%20-%2020.png" />
+                                    <span data-win-bind="innerText:tiempo;"></span>
+                                </div>
+                                <div class="difficulty">
+                                    <img src="../../images/bandera%20-%2020.png" />
+                                    <span data-win-bind="innerText:dificultad;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="resultsListView"
+                        data-win-control="WinJS.UI.ListView"
+                        data-win-options="{ itemDataSource : Popular.itemList.dataSource, 
+                itemTemplate: select('#recipeTemplate'),
+                oniteminvoked: itemClicked }">
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </body>

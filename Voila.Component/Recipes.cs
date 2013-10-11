@@ -51,9 +51,14 @@ namespace Voila.Component
             return RecipesHelper.GetPopular().AsAsyncOperation<string>();
         }
 
+        public string GetPopularList(int limit)
+        {
+            return RecipesHelper.GetPopular(limit);
+        }
+
         public async void UpdateFavoritesCache()
         {
-            cacheUpdateTask = RecipesHelper.GetLocalStorageFile("favorites.txt");
+            cacheUpdateTask = WindowsStorageHelper.GetLocalStorageFile("favorites.txt");
 
             var settingValue = await cacheUpdateTask;
 
@@ -67,7 +72,7 @@ namespace Voila.Component
 
         public async void UpdatePopularCache()
         {
-            popularUpdateTask = RecipesHelper.GetLocalStorageFile("popular.txt");
+            popularUpdateTask = WindowsStorageHelper.GetLocalStorageFile("popular.txt");
 
             var settingValue = await popularUpdateTask;
 

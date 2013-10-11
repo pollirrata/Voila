@@ -47,6 +47,14 @@ namespace Voila.Test
             Assert.IsNotNull(result);
         }
 
+        [TestMethod]
+        public void GetPopularLimited()
+        {
+            var result = RecipesHelper.GetPopular(8);
+
+            Assert.IsNotNull(result);
+        }
+
 
     }
 }
