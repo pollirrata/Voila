@@ -10,7 +10,26 @@
 #menuview {
 }
 
-#resultsListView .win-listview .win-container {
+#abstract {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
+    font-family: "Leelawadee UI", Segoe UI;
+}
+
+    #abstract #qty {
+        color: #8D8989;
+    }
+
+    #abstract #query {
+        color: #ED7D31;
+        text-transform: capitalize;
+    }
+
+/*#resultsListView .win-listview .win-container {
     background-color: #EBF3FA;
     border-radius: 10px 0 10px 0;
     width: 100px;
@@ -87,7 +106,7 @@
         }
 
 
-/*@media screen and (-ms-view-state: snapped) {
+@media screen and (-ms-view-state: snapped) {
     .pagecontrol section[role=main] {
         margin-left: 20px;
         margin-right: 20px;

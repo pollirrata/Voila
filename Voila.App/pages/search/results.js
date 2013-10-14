@@ -23,7 +23,19 @@
     };
 
     var goFavorites = function () {
-        WinJS.Navigation.navigate("/pages/favorites/mine.html")
+        var recipesComponent = new Voila.Component.Recipes();
+
+        //recipesComponent.updateFavoritesCache();
+
+        var itemList = new WinJS.Binding.List(jQuery.parseJSON(recipesComponent.getFavoritesCacheString()));
+
+        var publicMembers =
+            {
+                itemList: itemList
+            };
+        WinJS.Namespace.define("Favorites", publicMembers);
+
+        WinJS.Navigation.navigate("/pages/favorites/mine.html", Date.toString())
     };
 
     var goPopular = function () {
@@ -38,6 +50,12 @@
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
+
+            var abstractDiv = document.getElementById("abstract");
+
+            var state = WinJS.Navigation.state;
+
+            WinJS.Binding.processAll(abstractDiv, { qty: state.qty, query: state.query });
 
             $(".win-backbutton").click(function () {
                 $("body").css("background-color", "#D24726");

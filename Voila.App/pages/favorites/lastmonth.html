@@ -8,7 +8,7 @@
     <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
-
+    <link href="../search/resultslist.css" rel="stylesheet" />
     <link href="lastmonth.css" rel="stylesheet" />
     <script src="lastmonth.js"></script>
 </head>
@@ -18,6 +18,10 @@
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis logo">
                 <span class="pagetitle">Más populares</span>
+                <div id="abstract">
+                    <span id="qty">Top</span>&nbsp;<span id="query">8+</span><br />
+                    &Uacute;ltimo mes
+                </div>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
@@ -50,9 +54,11 @@
                             </div>
                             <div class="bottom" style="-ms-grid-row: 2;">
                                 <div class="ingredients">
-                                    <img src="../../images/ingredientes%20-%2020.png" /><span data-win-bind="innerText: cantidadIngredientes"></span>&nbsp;Ingredientes</div>
+                                    <img src="../../images/ingredientes%20-%2020.png" /><span data-win-bind="innerText: cantidadIngredientes"></span>&nbsp;Ingredientes
+                                </div>
                                 <div class="portions">
-                                    <img src="../../images/porciones%20-%2020.png" /><span data-win-bind="innerText: porciones"></span>&nbsp;Porciones</div>
+                                    <img src="../../images/porciones%20-%2020.png" /><span data-win-bind="innerText: porciones"></span>&nbsp;Porciones
+                                </div>
                                 <div class="time">
                                     <img src="../../images/reloj%20-%2020.png" />
                                     <span data-win-bind="innerText:tiempo;"></span>

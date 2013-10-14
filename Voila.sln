@@ -13,6 +13,8 @@ Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Voila.App", "Voila.App\Voil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voila.PushProcess", "Voila.PushProcess\Voila.PushProcess.csproj", "{3D44057C-F777-4842-AF7F-7CBC8A1D6902}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voila.PushInfo", "Voila.PushInfo\Voila.PushInfo.csproj", "{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,16 @@ Global
 		{3D44057C-F777-4842-AF7F-7CBC8A1D6902}.Release|ARM.ActiveCfg = Release|Any CPU
 		{3D44057C-F777-4842-AF7F-7CBC8A1D6902}.Release|x64.ActiveCfg = Release|Any CPU
 		{3D44057C-F777-4842-AF7F-7CBC8A1D6902}.Release|x86.ActiveCfg = Release|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Release|x64.ActiveCfg = Release|Any CPU
+		{766EAEBB-A29D-4AE4-9A53-383C9636D6B0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

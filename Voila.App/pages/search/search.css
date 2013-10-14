@@ -21,7 +21,7 @@
     background-color: #D24726;
     display: -ms-grid;
     -ms-grid-columns: 1fr;
-    -ms-grid-rows: 50% 20% 30%;
+    -ms-grid-rows: 45% 15% 40%;
     height: 100%;
 }
 
@@ -50,6 +50,7 @@
             border-radius: 10px 0 10px 0;
             vertical-align: top;
             text-align: center;
+            font-family: "Calibri Light"
         }
 
     #search .bottom {
@@ -64,27 +65,30 @@
             text-align: center;
             margin-left: auto;
             margin-right: auto;
+            font-weight:300;
             display: inline-block;
+            font-family: "Calibri Light";
             border: none;
         }
 
 @media screen and (-ms-view-state: fullscreen-landscape) {
     #search .top img {
-        padding-top: 50px;
+        padding-top: 0px;
         padding-left: 50px;
         width: 700px;
     }
 
-    #search .middle input {
-            width: 60%;
+    #search .middle #query {
+            width: 50%;
             height: 55px;
             font-size: 30px;
         }
 
     #search .bottom .ingredients {
-        width: 25%;
-        font-size: 34px;
-        padding: 10px;
+        width: 35%;
+        font-size: 45px;
+        padding: 5px 10px;
+        letter-spacing: 4px;
     }
 }
 

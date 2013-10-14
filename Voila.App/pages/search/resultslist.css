@@ -1,50 +1,4 @@
-﻿.pagecontrol section[role=main] {
-    /*margin-left: 120px;
-    margin-right: 120px;*/
-}
-
-h1.logo {
-    background-image: url(../../images/voila-w.png);
-    background-repeat: no-repeat;
-    background-position: 800px bottom;
-}
-
-#abstract {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: normal;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 30px;
-    font-family: "Leelawadee UI", Segoe UI;
-}
-
-    #abstract #qty {
-        color: #8D8989;
-    }
-
-    #abstract #query {
-        color: #ED7D31;
-        text-transform: capitalize;
-    }
-
-.pagetitle {
-    color: white;
-    font-size: 30px;
-    width: 300px;
-    padding: 10px 50px 10px 50px;
-    background-color: #D24726;
-    border-radius: 0 0 0 15px;
-    font-weight: bolder;
-    text-shadow: 2px 2px 2px #aaa;
-}
-
-#rightside {
-    -ms-grid-column: 2;
-    margin-top: 20px;
-}
-
-/*.win-listview {
+﻿.win-listview {
     height: 600px;
 }
 
@@ -65,9 +19,9 @@ h1.logo {
         padding-top: 10px;
         padding-bottom: 3px;
         display: -ms-grid;
-        -ms-grid-rows: 45px 30px;
+        -ms-grid-rows: 55px 40px;
         width: 500px;
-        height: 75px;
+        height: 95px;
     }
 
 
@@ -83,9 +37,8 @@ h1.logo {
                 font-weight: 600;
                 font-family: "Segoe UI Light";
                 font-size: 21px;
+                overflow:hidden;
             }
-
-
 
             #resultsListView .win-template > div .top .favorited {
                 -ms-grid-column: 2;
@@ -106,7 +59,7 @@ h1.logo {
             #resultsListView .win-template > div .bottom div {
                 text-align: center;
                 width: 125px;
-                font-size: 11px;
+                font-size: 12px;
                 font-weight: 500;
                 white-space: nowrap;
             }
@@ -130,18 +83,3 @@ h1.logo {
             #resultsListView .win-template > div .bottom .difficulty {
                 -ms-grid-column: 4;
             }
-
-
-/*@media screen and (-ms-view-state: snapped) {
-    .pagecontrol section[role=main] {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
-@media screen and (-ms-view-state: fullscreen-portrait) {
-    .pagecontrol section[role=main] {
-        margin-left: 100px;
-        margin-right: 100px;
-    }
-}*/*/

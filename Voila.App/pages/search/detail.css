@@ -24,6 +24,7 @@
     #recipeDetail .name {
         -ms-grid-column: 1;
         -ms-grid-row: 1;
+        font-family: "Century Gothic";
         /*background-color: #ffd800;*/
     }
 
@@ -93,8 +94,8 @@
     }
 
         #recipeDetail .ingredients div {
-            background-color: #FCEADE;
-            text-shadow: 2px 2px 2px #bdbdbd;
+            background-color: rgba(252, 234, 222, 0.8);
+            text-shadow: 2px 2px 2px #808080;
             color: white;
             font-weight: 500;
             display: inline-block;
@@ -116,7 +117,8 @@
         }
 
         #recipeDetail .ingredients .selected {
-            background-color: #FAD6BF;
+            background-color: rgba(250, 214, 191, 0.8);
+
         }
 
         #recipeDetail .ingredients .invisible {
@@ -124,11 +126,12 @@
         }
 
         #recipeDetail .ingredients ul {
-            background-color: #FAD6BF;
+            background-color: rgba(250, 214, 191, 0.8);
             padding: 30px 20px 10px;
             height: 100%;
             margin: 0;
             list-style: none;
+            font-family: 'Century Gothic', futura, 'URW Gothic L', Verdana, sans-serif;
         }
 
             #recipeDetail .ingredients ul li {
@@ -143,8 +146,8 @@
     }
 
         #recipeDetail .preparation div {
-            background-color: #E7F3E0;
-            text-shadow: 2px 2px 2px #bdbdbd;
+            background-color: rgba(231, 243, 224,0.8);
+            text-shadow: 2px 2px 2px #808080;
             color: white;
             font-weight: 500;
             display: inline-block;
@@ -166,7 +169,7 @@
         }
 
         #recipeDetail .preparation .selected {
-            background-color: #D0E6C2;
+            background-color: rgba(208, 230, 194,0.8);
         }
 
         #recipeDetail .preparation .invisible {
@@ -174,10 +177,11 @@
         }
 
         #recipeDetail .preparation ol {
-            background-color: #D0E6C2;
+            background-color: rgba(208, 230, 194,0.8);
             padding: 30px 20px 10px;
             height: 100%;
             margin: 0;
+            font-family: 'Century Gothic', futura, 'URW Gothic L', Verdana, sans-serif;
         }
 
             #recipeDetail .preparation ol li {

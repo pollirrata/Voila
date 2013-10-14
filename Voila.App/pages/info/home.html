@@ -8,20 +8,45 @@
     <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
-
+    <script src="../../js/jquery-2.0.3.min.js"></script>
     <link href="home.css" rel="stylesheet" />
+    <link href="../search/leftmenu.css" rel="stylesheet" />
+
     <script src="home.js"></script>
 </head>
 <body>
     <div class="home fragment">
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
-            <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to home</span>
+            <h1 class="titlearea win-type-ellipsis logo">
+                <span class="pagetitle">Informaci&oacute;n nutricional</span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-            <p>Content goes here.</p>
+            <div id="menuview">
+                <div id="menu">
+                    <div>
+                        <img id="goSearch" src="../../images/buscar%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goFavorites" src="../../images/favorito%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goPopular" src="../../images/popular%20-%2075.png" />
+                    </div>
+                    <div>
+                        <img id="goInfo" src="../../images/informacion%20-%2075.png" />
+                    </div>
+                </div>
+                <div id="rightside">
+                    <div id="titles">
+                    </div>
+                    <div id="advice">
+                        <h3></h3>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </body>

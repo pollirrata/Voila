@@ -36,16 +36,6 @@
     };
 
 
-    var recipesComponent = new Voila.Component.Recipes();
-    var itemList = new WinJS.Binding.List(jQuery.parseJSON(recipesComponent.getFavoritesCacheString()));
-
-    var publicMembers =
-        {
-            itemList: itemList
-        };
-    WinJS.Namespace.define("Favorites", publicMembers);
-
-
     WinJS.UI.Pages.define("/pages/favorites/mine.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
@@ -54,8 +44,11 @@
 
             resultsListView.addEventListener("iteminvoked", itemClicked);
 
+            var abstractDiv = document.getElementById("abstract");
+            WinJS.Binding.processAll(abstractDiv, { qty: Favorites.itemList.length })
+
             $("#goSearch").click(goSearch);
-            $("#goFavorites").click(goFavorites);
+            //$("#goFavorites").click(goFavorites);
             $("#goPopular").click(goPopular);
             $("#goInfo").click(goInfo);
         },

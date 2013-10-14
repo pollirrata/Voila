@@ -24,7 +24,19 @@
     };
 
     var goFavorites = function () {
-        WinJS.Navigation.navigate("/pages/favorites/mine.html")
+        var recipesComponent = new Voila.Component.Recipes();
+
+        //recipesComponent.updateFavoritesCache();
+
+        var itemList = new WinJS.Binding.List(jQuery.parseJSON(recipesComponent.getFavoritesCacheString()));
+
+        var publicMembers =
+            {
+                itemList: itemList
+            };
+        WinJS.Namespace.define("Favorites", publicMembers);
+
+        WinJS.Navigation.navigate("/pages/favorites/mine.html", Date.toString())
     };
 
     var goPopular = function () {

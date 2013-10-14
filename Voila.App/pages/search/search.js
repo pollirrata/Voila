@@ -25,6 +25,7 @@
                 }
 
                 var recipes = jQuery.parseJSON(response);
+                var qty = 0;
                 //for(var i= 0; i<recipes.lenght; i++){
                 for (var i in recipes) {
                     var id = recipes[i]._id;
@@ -36,9 +37,12 @@
                     }
                     var stars = recipesComponent.getStars(id).toString();
                     recipes[i].stars = "../../images/pop" + stars + " - 20.png";
+                    qty++;
                 }
 
-                WinJS.Navigation.navigate("/pages/search/results.html", new WinJS.Binding.List(recipes));
+
+
+                WinJS.Navigation.navigate("/pages/search/results.html", { recipes: new WinJS.Binding.List(recipes), query: ingredients, qty: qty });
             }
 
             $("#go").click(onRecipesSearch);

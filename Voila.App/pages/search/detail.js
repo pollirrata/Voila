@@ -83,7 +83,7 @@
                             listItem.innerText = this._itemList[j];
                             bulletList.appendChild(listItem);
                         }
-                        bulletList.setAttribute("class", ulClass +  " t"  + (i + 1).toString());
+                        bulletList.setAttribute("class", ulClass + " t" + (i + 1).toString());
                         this._element.appendChild(bulletList);
                         ulClass = "invisible";
                     }
@@ -142,6 +142,18 @@
             };
 
             var goFavorites = function () {
+                var recipesComponent = new Voila.Component.Recipes();
+
+                //recipesComponent.updateFavoritesCache();
+
+                var itemList = new WinJS.Binding.List(jQuery.parseJSON(recipesComponent.getFavoritesCacheString()));
+
+                var publicMembers =
+                    {
+                        itemList: itemList
+                    };
+                WinJS.Namespace.define("Favorites", publicMembers);
+
                 WinJS.Navigation.navigate("/pages/favorites/mine.html")
             };
 

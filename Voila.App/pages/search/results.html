@@ -10,6 +10,7 @@
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
     <script src="../../js/jquery-2.0.3.min.js"></script>
     <link href="leftmenu.css" rel="stylesheet" />
+    <link href="resultslist.css" rel="stylesheet" />
     <link href="results.css" rel="stylesheet" />
     <script src="results.js"></script>
 </head>
@@ -19,6 +20,10 @@
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis logo">
                 <span class="pagetitle">Resultados</span>
+                <div id="abstract">
+                    <span id="qty" data-win-bind="innerText: qty;"></span>&nbsp;recetas con<br />
+                    <span id="query" data-win-bind="innerText: query;"></span>
+                </div>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
@@ -51,9 +56,11 @@
                             </div>
                             <div class="bottom" style="-ms-grid-row: 2;">
                                 <div class="ingredients">
-                                    <img src="../../images/ingredientes%20-%2020.png" /><span data-win-bind="innerText: cantidadIngredientes"></span>&nbsp;Ingredientes</div>
+                                    <img src="../../images/ingredientes%20-%2020.png" /><span data-win-bind="innerText: cantidadIngredientes"></span>&nbsp;Ingredientes
+                                </div>
                                 <div class="portions">
-                                    <img src="../../images/porciones%20-%2020.png" /><span data-win-bind="innerText: porciones"></span>&nbsp;Porciones</div>
+                                    <img src="../../images/porciones%20-%2020.png" /><span data-win-bind="innerText: porciones"></span>&nbsp;Porciones
+                                </div>
                                 <div class="time">
                                     <img src="../../images/reloj%20-%2020.png" />
                                     <span data-win-bind="innerText:tiempo;"></span>
@@ -68,7 +75,7 @@
 
                     <div id="resultsListView"
                         data-win-control="WinJS.UI.ListView"
-                        data-win-options="{ itemDataSource : WinJS.Navigation.state.dataSource, 
+                        data-win-options="{ itemDataSource : WinJS.Navigation.state.recipes.dataSource, 
                 itemTemplate: select('#recipeTemplate'),
                 oniteminvoked: itemClicked }">
                     </div>

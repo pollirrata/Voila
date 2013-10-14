@@ -1,4 +1,4 @@
-﻿.home section[role=main] {
+﻿/*.home section[role=main] {
     margin-left: 120px;
     margin-right: 120px;
 }
@@ -15,4 +15,72 @@
         margin-left: 100px;
         margin-right: 100px;
     }
+}*/
+
+h1.logo {
+    background-image: url(../../images/voila-w.png);
+    background-repeat: no-repeat;
+    background-position: 800px bottom;
+}
+
+.pagetitle {
+    color: white;
+    font-size: 30px;
+    width: 300px;
+    padding: 10px 50px 10px 50px;
+    background-color: #D24726;
+    border-radius: 0 0 0 15px;
+    font-weight: bolder;
+    text-shadow: 2px 2px 2px #aaa;
+}
+
+#rightside {
+    -ms-grid-column: 2;
+}
+
+#titles {
+    margin-top: 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#titles, #advice {
+    display: inline-block;
+    height: 500px;
+    vertical-align: top;
+}
+
+#rightside #titles div {
+    background-color: #ED7D31;
+    color: white;
+    font-weight: 600;
+    margin: 5px;
+    text-align: center;
+    padding: 30px 20px;
+    margin: 0 30px 20px 10px;
+    font-size: 16px;
+    font-family: "Segoe UI Semibold";
+}
+
+#rightside #advice h3 {
+    color: #2E75B6;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 10px;
+    font-family: "Estrangelo Edessa";
+}
+
+#rightside #advice div {
+    color: white;
+    background-color: #D24726;
+    font-family: 'Century Gothic', futura, 'URW Gothic L', Verdana, sans-serif;
+    text-align: justify;
+    -ms-text-justify: inter-word;
+    font-size: 24px;
+    padding: 20px;
+    width: 700px;
+    margin: 5px;
+    height: 50%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }

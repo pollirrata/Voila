@@ -112,6 +112,7 @@
     <Content Include="pages\search\results.css" />
     <Content Include="pages\search\results.html" />
     <Content Include="pages\search\results.js" />
+    <Content Include="pages\search\resultslist.css" />
     <Content Include="pages\search\search.css" />
     <Content Include="pages\search\search.html" />
     <Content Include="pages\search\search.js" />
