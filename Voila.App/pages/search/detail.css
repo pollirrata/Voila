@@ -1,17 +1,7 @@
 ﻿.cookingBackground {
-    /*margin-left: 120px;
-    margin-right: 120px;*/
     background-image: url(../../images/cooking-at-home.jpg);
     background-position: 120px;
     background-repeat: no-repeat;
-}
-
-
-.spanner {
-    height: 100%;
-    display: inline-block;
-    /*border: solid;*/
-    vertical-align: middle;
 }
 
 #recipeDetail {
@@ -25,7 +15,6 @@
         -ms-grid-column: 1;
         -ms-grid-row: 1;
         font-family: "Century Gothic";
-        /*background-color: #ffd800;*/
     }
 
         #recipeDetail .name h2 {
@@ -113,12 +102,10 @@
             font-size: 20px;
             margin-left: 2px;
             margin-right: 1px;
-            /*border-radius: 0 5px 0 0;*/
         }
 
         #recipeDetail .ingredients .selected {
             background-color: rgba(250, 214, 191, 0.8);
-
         }
 
         #recipeDetail .ingredients .invisible {
@@ -165,7 +152,6 @@
             font-size: 20px;
             margin-left: 2px;
             margin-right: 1px;
-            /*border-radius: 0 5px 0 0;*/
         }
 
         #recipeDetail .preparation .selected {
@@ -189,18 +175,3 @@
                 margin-bottom: 5px;
                 margin-left: 20px;
             }
-
-
-@media screen and (-ms-view-state: snapped) {
-    .detail section[role=main] {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
-@media screen and (-ms-view-state: fullscreen-portrait) {
-    /*.detail section[role=main] {
-        margin-left: 100px;
-        margin-right: 100px;
-    }*/
-}

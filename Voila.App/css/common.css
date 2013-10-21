@@ -1,0 +1,25 @@
+﻿@media screen and (-ms-view-state: snapped) {
+    .fragment {
+        display: none;
+    }
+
+    #contenthost {
+        background-image: url(../images/voila-w.png);
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
+    }
+}
+
+
+h1.logo {
+    background-image: url(../../images/voila-w.png);
+    background-repeat: no-repeat;
+    background-position: 75% bottom;
+}
+
+.spanner {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}

@@ -9,6 +9,13 @@
     var activation = Windows.ApplicationModel.Activation;
     var nav = WinJS.Navigation;
 
+    app.addEventListener("checkpoint", function (args) {
+        // The app is about to be suspended, so we save the current
+        // navigation history.
+        nav.history.current = null;
+        app.sessionState.history = nav.history;
+    }, false);
+
     app.addEventListener("activated", function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
