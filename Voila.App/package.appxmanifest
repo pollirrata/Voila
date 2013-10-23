@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="16261Pollirrata.voilaX" Version="1.0.0.6" Publisher="CN=B17AF2D5-82D6-4A10-A50D-C10447283AC3" />
+  <Identity Name="16261Pollirrata.voilaX" Version="1.0.0.7" Publisher="CN=B17AF2D5-82D6-4A10-A50D-C10447283AC3" />
   <Properties>
-    <DisplayName>voilaX</DisplayName>
-    <PublisherDisplayName>Pollirrata</PublisherDisplayName>
-    <Logo>images\storelogo.png</Logo>
+    <DisplayName>voila</DisplayName>
+    <PublisherDisplayName>Gerardo Revilla</PublisherDisplayName>
+    <Logo>images\icono50x50.png</Logo>
   </Properties>
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
@@ -15,11 +15,10 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="voilaX" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Voila.App" ForegroundText="light" BackgroundColor="#464646">
-        <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\splashscreen.png" />
+      <VisualElements DisplayName="Voilá!" Logo="images\icono270x270.png" SmallLogo="images\icono30x30.png" Description="Voilá!" ForegroundText="dark" BackgroundColor="#ffffff" ToastCapable="false">
+        <DefaultTile ShowName="allLogos" WideLogo="images\icon558x270.png" />
+        <SplashScreen Image="images\icono620x300.png" BackgroundColor="#FF6600" />
         <InitialRotationPreference>
-          <Rotation Preference="portrait" />
           <Rotation Preference="landscape" />
         </InitialRotationPreference>
       </VisualElements>

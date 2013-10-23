@@ -13,8 +13,21 @@
         // The app is about to be suspended, so we save the current
         // navigation history.
         nav.history.current = null;
+        nav.history.backStack = null;
         app.sessionState.history = nav.history;
     }, false);
+
+    var settingsPane = Windows.UI.ApplicationSettings.SettingsPane.getForCurrentView();
+
+    function commandsRequested(eventArgs) {
+        var applicationCommands = eventArgs.request.applicationCommands;
+        var privacyCommand = new Windows.UI.ApplicationSettings.SettingsCommand('privacy', 'Política de privacidad', function () {
+            window.open('http://jericallaapps.azurewebsites.net/voila/privacy.txt');
+        });
+        applicationCommands.append(privacyCommand);
+    }
+
+    settingsPane.addEventListener("commandsrequested", commandsRequested);
 
     app.addEventListener("activated", function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
